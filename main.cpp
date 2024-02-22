@@ -1,19 +1,27 @@
 #include <iostream>
 
+#define BUFF_SIZE 255
+
+
+
 int main(int argc , char* argv[])
 {
-    char* buffer = new char;
+    char buff[BUFF_SIZE];
 
-    buffer[0] = 'a';
-    buffer[1] = 'h';
-    buffer[2] = 'o';
-    buffer[3] = 'j';
-
-
-    for (int i{0}; i < 4; i++)
+    while(1)
     {
-        printf("%c" , buffer[i]);
+        std::cin >> buff;
+
+
+
+
+        if(!std::strcmp(buff , "quit")) { break; }
+
+
+        std::cout << buff << std::endl;
     }
+
+
 
     return 0;
 }
