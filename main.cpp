@@ -1,26 +1,34 @@
 #include <iostream>
 
-#define BUFF_SIZE 255
+#define MAX_EXPRESSION_SIZE 128 
 
+bool isOperator(char c)
+{
+    if(c == '+' || c == '-' || c == '*' || c =='/') { return true; }
 
+    return false;
+}
 
 int main(int argc , char* argv[])
 {
-    char buff[BUFF_SIZE];
+    int N{0};
 
-    while(1)
+    std::cin >> N;
+
+    if (N <= 0) { return 1; }
+
+    char expression[N][MAX_EXPRESSION_SIZE];
+
+    for(int i{0}; i < N; i++)
     {
-        std::cin >> buff;
-
-
-
-
-        if(!std::strcmp(buff , "quit")) { break; }
-
-
-        std::cout << buff << std::endl;
+        std::cin >> expression[i];
     }
 
+
+    for(int i{0}; i < N; i++)
+    {
+        std::cout << expression[i] << std::endl;
+    }
 
 
     return 0;
