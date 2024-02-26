@@ -1,13 +1,60 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <limits>
+#include <stack>
 
-#define MAX_EXPRESSION_SIZE 32
+int applyOperator(int x , int y , char oprt)
+{
+    int result{0};
+
+    switch (oprt)
+    {
+        case '*':
+            return x*y;
+        break;
+
+        case '/':
+            return x/y;
+        break;
+
+        case '+':
+            return x+y;
+        break;
+
+        case '-':
+            return x-y;
+        break;
+    }
+
+    return -1; //error
+}
 
 bool isOperator(char c)
 {
     return (c == '+' || c == '-' || c == '*' || c == '/');
+}
+
+bool isOpeningBracket(char c)
+{
+    return (c == '(');
+}
+
+bool isClosingBracket(char c)
+{
+    return (c == ')');
+}
+
+int charToDigit(char c)
+{
+    return c - '0';
+}
+
+int findPrecedence(char oprt)
+{
+    if (oprt == '+' || oprt == '-') { return 1; }
+    if (oprt == '*' || oprt == '/') { return 2; }
+
+    return 0;
 }
 
 std::string trimWhiteSpaces(std::string s)
@@ -16,7 +63,7 @@ std::string trimWhiteSpaces(std::string s)
 
     for (auto &c : s)
     {
-        if (c != ' ')
+        if (c != ' ' && c != '\t')
         {
             output += c;
         }
@@ -25,40 +72,93 @@ std::string trimWhiteSpaces(std::string s)
     return output;
 }
 
-int eval(std::string expression)
+
+int eval(const std::string &expression)
 {
-    int result = -1;
-    // Add logic to evaluate the expression based on operators
-    // For simplicity, this example assumes a single operator expression
-    size_t operatorPos = expression.find_first_of("+-*/");
-    if (operatorPos != std::string::npos)
+    std::string trimmedExpression = trimWhiteSpaces(expression);
+
+    std::stack<int> values;
+    std::stack<char> operators;
+
+
+    for(int i{0}; i < trimmedExpression.length(); i++)
     {
-        int operand1 = std::stoi(expression.substr(0, operatorPos));
-        int operand2 = std::stoi(expression.substr(operatorPos + 1));
-
-        char op = expression[operatorPos];
-
-        switch (op)
+        if (isOpeningBracket(trimmedExpression[i]))
         {
-        case '+':
-            result = operand1 + operand2;
-            break;
-        case '-':
-            result = operand1 - operand2;
-            break;
-        case '*':
-            result = operand1 * operand2;
-            break;
-        case '/':
-            // Add check for division by zero if needed
-            result = operand1 / operand2;
-            break;
+            operators.push(trimmedExpression[i]);
+
+        } else if(isdigit(trimmedExpression[i]))
+        {
+            values.push(charToDigit(trimmedExpression[i]));
+
+        } else if (isClosingBracket(trimmedExpression[i])) // prvni ')' -> zacnu zpracovavat prvni '()'
+        {
+            while(!operators.empty() && operators.top() != '(')
+            {
+                int x = values.top();
+
+                values.pop();
+
+                int y = values.top();
+
+                values.pop();
+
+                char oprt = operators.top();
+
+                operators.pop();
+
+                values.push(applyOperator(x , y , oprt));
+            }
+
+            if (!operators.empty()) { operators.pop(); } // zbavuju se '('
+
+        } else { //je operator
+
+            while(!operators.empty() && findPrecedence(operators.top() >= findPrecedence(trimmedExpression[i])))
+            {
+                int x = values.top();
+
+                values.pop();
+
+                int y = values.top();
+
+                values.pop();
+
+                char oprt = operators.top();
+                operators.pop();
+
+                values.push(applyOperator(y , x , oprt));
+            }
+
+            operators.push(trimmedExpression[i]);
+
         }
     }
-    return result;
+
+    while(!operators.empty())
+    {
+        int x = values.top();
+
+        values.pop();
+
+        int y = values.top();
+
+        values.pop();
+
+        char oprt = operators.top();
+
+        operators.pop();
+
+        values.push(applyOperator(x , y , oprt));
+    }
+
+
+  
+
+    return values.top();
 }
 
-int main(int argc, char *argv[])
+int main()
 {
     int N{0};
 
@@ -80,9 +180,10 @@ int main(int argc, char *argv[])
         expressions.push_back(expression);
     }
 
-    for(auto& exp : expressions)
+    for (auto &exp : expressions)
     {
-        std::cout << eval(trimWhiteSpaces(exp)) << std::endl;
+        //eval(exp);
+        std::cout << eval(exp) << std::endl;
     }
 
     return 0;
