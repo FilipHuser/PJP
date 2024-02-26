@@ -72,24 +72,54 @@ std::string trimWhiteSpaces(std::string s)
     return output;
 }
 
+bool isValid(std::string expression)
+{
+    for (int i{0}; i < expression.length(); i++)
+    {
+        if (i == 0 && isOperator(expression[i])) { return false; }
 
-int eval(const std::string &expression)
+        if(i <= expression.length() - 1)
+        {
+            if (isOperator(expression[i]) && isOperator(expression[i + 1]))
+            {
+                return false;
+            }
+        }
+
+    }
+
+    return true;
+}
+
+std::string eval(std::string expression)
 {
     std::string trimmedExpression = trimWhiteSpaces(expression);
 
     std::stack<int> values;
     std::stack<char> operators;
 
+    if (isValid(expression)) { return "Error"; }
+
 
     for(int i{0}; i < trimmedExpression.length(); i++)
     {
-        if (isOpeningBracket(trimmedExpression[i]))
+        if (isOpeningBracket(trimmedExpression[i])) // '('
         {
             operators.push(trimmedExpression[i]);
 
-        } else if(isdigit(trimmedExpression[i]))
+        } else if(isdigit(trimmedExpression[i])) // cislo
         {
-            values.push(charToDigit(trimmedExpression[i]));
+            int x{0};
+             
+            // There may be more than one
+            // digits in number.
+            while(i < trimmedExpression.length() && isdigit(trimmedExpression[i]))
+            {
+                x = (x*10) + charToDigit(trimmedExpression[i]);
+                i++;
+            }
+            values.push(x);
+            i--;
 
         } else if (isClosingBracket(trimmedExpression[i])) // prvni ')' -> zacnu zpracovavat prvni '()'
         {
@@ -107,14 +137,14 @@ int eval(const std::string &expression)
 
                 operators.pop();
 
-                values.push(applyOperator(x , y , oprt));
+                values.push(applyOperator(y , x , oprt));
             }
 
             if (!operators.empty()) { operators.pop(); } // zbavuju se '('
 
         } else { //je operator
 
-            while(!operators.empty() && findPrecedence(operators.top() >= findPrecedence(trimmedExpression[i])))
+            while(!operators.empty() && operators.top() != '(' && findPrecedence(operators.top()) >= findPrecedence(trimmedExpression[i])) //dokud prvni operator ma stejnou nebo vetsi prednost 
             {
                 int x = values.top();
 
@@ -130,6 +160,7 @@ int eval(const std::string &expression)
                 values.push(applyOperator(y , x , oprt));
             }
 
+            // + - * /
             operators.push(trimmedExpression[i]);
 
         }
@@ -149,13 +180,11 @@ int eval(const std::string &expression)
 
         operators.pop();
 
-        values.push(applyOperator(x , y , oprt));
+        values.push(applyOperator(y , x , oprt));
     }
 
 
-  
-
-    return values.top();
+    return std::to_string(values.top());
 }
 
 int main()
@@ -182,7 +211,6 @@ int main()
 
     for (auto &exp : expressions)
     {
-        //eval(exp);
         std::cout << eval(exp) << std::endl;
     }
 
