@@ -78,7 +78,7 @@ bool isValid(std::string expression)
     {
         if (i == 0 && isOperator(expression[i])) { return false; }
 
-        if(i <= expression.length() - 1)
+        if(i < expression.length() - 1)
         {
             if (isOperator(expression[i]) && isOperator(expression[i + 1]))
             {
@@ -98,7 +98,7 @@ std::string eval(std::string expression)
     std::stack<int> values;
     std::stack<char> operators;
 
-    if (isValid(expression)) { return "Error"; }
+    if (!isValid(expression)) { return "ERROR"; }
 
 
     for(int i{0}; i < trimmedExpression.length(); i++)
