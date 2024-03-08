@@ -54,6 +54,8 @@
         "vector": "cpp",
         "algorithm": "cpp",
         "deque": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp"
     }
 }
