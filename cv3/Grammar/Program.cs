@@ -25,7 +25,12 @@ namespace Lab3
 					Console.Write(nt.Name + " ");
 				}
 				Console.WriteLine();
-			}
+
+				// Second step, computes First set
+
+				gr.print_table(gr.compute_first());
+
+            }
 			catch (GrammarException e)
 			{
 				Console.WriteLine($"{e.LineNumber}: Error -  {e.Message}");

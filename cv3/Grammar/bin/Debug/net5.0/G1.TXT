@@ -1,5 +1,8 @@
 {Testing grammar}
 
-A : b C | B d;
-B : C C | b A;
-C : c C | {e};
+A :	b C;
+A :	B d;
+B :	C C;
+B :	b A;
+C :	c C;
+C :	{e};

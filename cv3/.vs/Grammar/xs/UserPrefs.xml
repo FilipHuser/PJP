@@ -1,33 +1,23 @@
 ﻿<Properties StartupConfiguration="{B8A1589F-DDC5-43D6-9B01-BE0457FA3378}|Default">
-  <MonoDevelop.Ide.ItemProperties.Grammar PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Grammar/G1.TXT">
-    <Files>
-      <File FileName="Grammar/Program.cs" Line="25" Column="32" />
-      <File FileName="Grammar/GrammarOps.cs" Line="47" Column="22" />
-      <File FileName="Grammar/G1.TXT" Line="6" Column="1" />
-      <File FileName="Grammar/Grammar/IGrammar.cs" Line="14" Column="41" />
-      <File FileName="Grammar/Grammar/GrammarReader.cs" Line="80" Column="5" />
-      <File FileName="Grammar/Grammar/GrammarImpl.cs" Line="54" Column="47" />
-      <File FileName="Grammar/Grammar/Rule.cs" Line="16" Column="22" />
-      <File FileName="Grammar/Grammar/Symbol.cs" Line="10" Column="4" />
-      <File FileName="Grammar/Grammar/Nonterminal.cs" Line="5" Column="30" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Grammar" expanded="True">
-            <Node name="Grammar" expanded="True" selected="True">
+            <Node name="Grammar">
               <Node name="Grammar" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Grammar PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
