@@ -1,0 +1,7 @@
+{Input grammar}
+A :	b C;
+A :	B d;
+B :	C C;
+B :	b A;
+C :	c C;
+C :	{e};

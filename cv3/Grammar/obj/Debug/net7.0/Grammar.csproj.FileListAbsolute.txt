@@ -1,0 +1,16 @@
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/bin/Debug/net7.0/G1.TXT
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/bin/Debug/net7.0/Grammar
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/bin/Debug/net7.0/Grammar.deps.json
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/bin/Debug/net7.0/Grammar.runtimeconfig.json
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/bin/Debug/net7.0/Grammar.dll
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/bin/Debug/net7.0/Grammar.pdb
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/obj/Debug/net7.0/Grammar.csproj.AssemblyReference.cache
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/obj/Debug/net7.0/Grammar.GeneratedMSBuildEditorConfig.editorconfig
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/obj/Debug/net7.0/Grammar.AssemblyInfoInputs.cache
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/obj/Debug/net7.0/Grammar.AssemblyInfo.cs
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/obj/Debug/net7.0/Grammar.csproj.CoreCompileInputs.cache
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/obj/Debug/net7.0/Grammar.dll
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/obj/Debug/net7.0/refint/Grammar.dll
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/obj/Debug/net7.0/Grammar.pdb
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/obj/Debug/net7.0/Grammar.genruntimeconfig.cache
+/Users/filiphuser/Desktop/VŠB/PJP/cv3/Grammar/obj/Debug/net7.0/ref/Grammar.dll
